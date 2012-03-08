@@ -1,10 +1,25 @@
 #!/bin/sh
 
+# constants
+PATH_SERVICE="`pwd`/`dirname ${0}`"
+PATH_ROOT="$PATH_SERVICE/.."
+FILE_CONFIG="service.telco.conf"
+
+# bootstrap
+. $PATH_ROOT/bootstrap.sh
+bootstrap
+
+
+
+# todo cleanup stuff
+
+
+
 BIN_CURL=`which curl`
 
 FILE_COOKIE="/tmp/telco_cookie.txt"
 FILE_APPENDIX="invoice.pdf"
-DIR_INVOICE=`pwd`/downloads
+DIR_INVOICE=$PATH_SERVICE/downloads
 
 # General
 DATA_STARTID=2514305
@@ -12,8 +27,6 @@ DATA_USERAGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:8.0.1) Gecko/201
 
 # Login data
 DATA_ACTION="https://service.telco.de/frei/LOGIN"
-DATA_LOGIN="[__your login__]"
-DATA_PASSWORD="[__your password__]"
 DATA_DESTINATION="/telco/index3.php"
 
 # Download Data
@@ -27,8 +40,8 @@ loginAndDownload() {
 		$BIN_CURL \
 			-c $FILE_COOKIE \
 			--user-agent "$DATA_USERAGENT" \
-			-F "credential_0=$DATA_LOGIN" \
-			-F "credential_1=$DATA_PASSWORD" \
+			-F "credential_0=$username" \
+			-F "credential_1=$password" \
 			-F "destination=$DATA_DESTINATION" \
 			$DATA_ACTION
 	fi
