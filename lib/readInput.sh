@@ -1,10 +1,13 @@
 #!/bin/sh
 
 # config vars
+input_id=
 input_username=
 input_password=
+id=
 username=
 password=
+save_id=
 save_username=
 save_password=
 
@@ -18,14 +21,31 @@ readParameter() {
 		exit 1
 	fi
 
-	while getopts hp:u: option
+	while getopts hi:p:u: option
 	do	case "$option" in
-		u)	input_username="$OPTARG";;
-		p)	input_password="$OPTARG";;
 		h)	echo $TEXT_HELP
 			exit 1;;
+		i)	input_id="$OPTARG";;
+		p)	input_password="$OPTARG";;
+		u)	input_username="$OPTARG";;
 		esac
 	done	
+}
+
+# read id if not given as parameter
+readId() {
+	if [ $input_id ]; then
+		# save previous id
+		save_id="id=$id"
+
+		id=$input_id
+	elif [ ! $id ]; then
+		echo "id?"
+		read id
+		save_id="id=$id"
+	else
+		save_id="id=$id"
+	fi
 }
 
 # read username if not given as parameter
