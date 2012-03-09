@@ -6,6 +6,8 @@
 TEXT_HELP="Usage: $0 [-u username] [-p password] [-h]"
 TEXT_NO_CURL="Can't find curl at"
 TEXT_NOEXEC_CURL="Can't execute curl at"
+TEXT_DLD_SUCCESS="File downloaded"
+TEXT_DLD_NONE="No file downloaded"
 
 # paths
 PATH_CONFIG="$PATH_ROOT/.config"

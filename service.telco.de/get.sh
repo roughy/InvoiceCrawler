@@ -63,11 +63,16 @@ getFiles() {
 		if [ -f $file ]; then
 			echo "found file for id $curID"
 			curID=`expr $curID - 1`
-			continue
 		else
 			echo "download file with id $curID"
 			loginAndDownload $curID $file
-			break
+			if [ -f $file ]; then
+				echo "$TEXT_DLD_SUCCESS ($curID.$FILE_APPENDIX)"
+				curID=`expr $curID - 1`
+			else
+				echo "$TEXT_DLD_NONE ($curID.$FILE_APPENDIX)"
+				break	
+			fi
 		fi
 	done	
 }
