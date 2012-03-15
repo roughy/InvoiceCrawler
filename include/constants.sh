@@ -13,8 +13,10 @@ TEXT_DLD_NONE="No file downloaded"
 TEXT_NO_DIR="Directory doesn't exist"
 TEXT_NO_WRITEABLE_DIR="Directory has no write permission"
 
-# paths
+# files & paths
 PATH_CONFIG="$PATH_ROOT/.config"
+PATH_CACHE="$PATH_SERVICE/downloads"
+FILE_COOKIE="/tmp/$NAME_SERVICE.cookie.txt"
 
 # stuff
 DATA_USERAGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:8.0.1) Gecko/20100101 Firefox/8.0.1"

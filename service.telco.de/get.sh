@@ -1,10 +1,8 @@
 #!/bin/sh
 
 # constants
-NAME_APP="telco"
+NAME_SERVICE="telco"
 PATH_ROOT="$PATH_SERVICE/.."
-PATH_CACHE="$PATH_SERVICE/downloads"
-FILE_COOKIE="/tmp/$NAME_APP.cookie.txt"
 
 # Login data
 DATA_ACTION="https://service.telco.de/frei/LOGIN"
@@ -89,7 +87,7 @@ backupFiles() {
 	if [ $backup = "y" ]; then
 		checkZip
 		cd $PATH_CACHE
-		$BIN_ZIP $bkpPath/$NAME_APP.zip ./*.* > /dev/null
+		$BIN_ZIP $bkpPath/$NAME_SERVICE.zip ./*.* > /dev/null
 		cd - > /dev/null
 	fi
 }
