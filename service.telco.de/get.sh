@@ -1,9 +1,10 @@
 #!/bin/sh
 
 # constants
+NAME_APP="telco"
 PATH_ROOT="$PATH_SERVICE/.."
 PATH_CACHE="$PATH_SERVICE/downloads"
-FILE_COOKIE="/tmp/telco_cookie.txt"
+FILE_COOKIE="/tmp/$NAME_APP.cookie.txt"
 
 # Login data
 DATA_ACTION="https://service.telco.de/frei/LOGIN"
@@ -24,15 +25,18 @@ runCrawler() {
 	readUsername
 	readPassword
 	readId
+	readBackupPath
 
 	# save config
 	echo "# comment
 $save_id
 $save_username
 $save_password
+$save_bkpPath
 " > $PATH_CONFIG/$FILE_CONFIG
 	
 	getFiles
+	backupFiles
 }
 
 loginAndDownload() {
@@ -75,4 +79,17 @@ getFiles() {
 			fi
 		fi
 	done	
+}
+
+backupFiles() {
+	echo "backup?"
+	read backup
+	backup="$(echo ${backup} | tr 'A-Z' 'a-z')" # to lower
+
+	if [ $backup = "y" ]; then
+		checkZip
+		cd $PATH_CACHE
+		$BIN_ZIP $bkpPath/$NAME_APP.zip ./*.* > /dev/null
+		cd - > /dev/null
+	fi
 }

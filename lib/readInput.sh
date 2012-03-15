@@ -4,12 +4,15 @@
 input_id=
 input_username=
 input_password=
+input_bkpPath=
 id=
 username=
 password=
+bkpPath=
 save_id=
 save_username=
 save_password=
+save_bkpPath=
 
 # read input parameter
 readParameter() {
@@ -30,6 +33,30 @@ readParameter() {
 		u)	input_username="$OPTARG";;
 		esac
 	done	
+}
+
+# read id if not given as parameter
+readBackupPath() {
+	if [ $input_bkpPath ]; then
+		# save previous bkpPath
+		save_bkpPath="bkpPath=$bkpPath"
+
+		bkpPath=$input_bkpPath
+	elif [ ! $bkpPath ]; then
+		echo "Backup path?"
+		read bkpPath
+		save_bkpPath="bkpPath=$bkpPath"
+	else
+		save_bkpPath="bkpPath=$bkpPath"
+	fi
+	
+	if [[ ! -d $bkpPath && ! -L $bkpPath ]]; then
+		echo "$TEXT_NO_DIR ($bkpPath)"
+		exit 1
+	elif [ ! -w $bkpPath ]; then
+		echo "$TEXT_NO_WRITEABLE_DIR ($bkpPath)"
+		exit 1
+	fi
 }
 
 # read id if not given as parameter
