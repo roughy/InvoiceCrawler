@@ -20,3 +20,4 @@ FILE_COOKIE="/tmp/$NAME_SERVICE.cookie.txt"
 
 # stuff
 DATA_USERAGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:8.0.1) Gecko/20100101 Firefox/8.0.1"
+TTL_COOKIE=60 # sec
