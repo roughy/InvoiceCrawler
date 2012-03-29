@@ -1,6 +1,10 @@
 #!/bin/sh
 BIN_CURL=`which curl`
 BIN_ZIP=`which zip`
+BIN_GREP=`which grep`
+BIN_SED=`which sed`
+BIN_SORT=`which sort`
+BIN_MD5=`which md5`
 
 checkCurl() {
 	if [ ! -f $BIN_CURL ]; then
