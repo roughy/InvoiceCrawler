@@ -3,7 +3,7 @@
 # constants
 PATH_SERVICE="`pwd`/`dirname ${0}`"
 FILE_APPENDIX="egn.pdf"
-FILE_CONFIG="egn.telco.conf"
+FILE_CONFIG="telco.conf"
 DATA_DOCTYPE="EGN"
 DATA_UNTERACTION="egn24"
 

@@ -3,7 +3,7 @@
 # constants
 PATH_SERVICE="`pwd`/`dirname ${0}`"
 FILE_APPENDIX="invoice.pdf"
-FILE_CONFIG="invoice.telco.conf"
+FILE_CONFIG="telco.conf"
 DATA_DOCTYPE="RECH"
 DATA_UNTERACTION="rechnung24"
 
