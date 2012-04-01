@@ -23,7 +23,6 @@ runCrawler() {
 	# read neccessary data
 	readUsername
 	readPassword
-	readId
 	readBackupPath
 
 	# save config
