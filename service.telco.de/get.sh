@@ -27,7 +27,6 @@ runCrawler() {
 
 	# save config
 	echo "# comment
-$save_id
 $save_username
 $save_password
 $save_bkpPath
